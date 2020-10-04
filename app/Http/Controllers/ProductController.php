@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 
 use App\Models\Product;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Storage;
+
 
 use Illuminate\Support\Facades\DB;
 
@@ -23,7 +25,10 @@ class ProductController extends Controller {
             'company'       => 'required',
             'price'         => 'required',
             'product_type'  => 'required',
-            'product_overview' =>'required'
+            'product_overview' =>'required', 
+            'product_name' => 'required', 
+            'product_image' => 'required|image|mimes:jpg,png,jpeg|max:2048|dimensions:min_width=100,min_height=100',
+
         ]);
 
         if ($validator->fails()) {
@@ -35,29 +40,48 @@ class ProductController extends Controller {
 
         $Product = new Product;
 
-        $Product->product_name 	= $request->product_name;
-        $Product->description   = $request->description;
+        $image_upload = false;    
+        if ($request->hasFile('product_image')) {
 
-        $Product->category_id 	= $request->category;
-        $Product->category_name = '';
+            if ($request->file('product_image')->isValid()) {
 
-        $Product->company_id 	= $request->company;
-        $Product->company_name 	= '';
+                $file = $request->file('product_image');
+                //$image = $file.'_'.time().'.'.$file->getClientOriginalExtension();
 
+                $filename = str_replace(" ", "_", $file->getClientOriginalName());
+                $image_name = date('mdYHis').'_'.uniqid().'_'.$filename;
 
-        $Product->price 	= $request->price;  
-        $Product->flags 	= $request->flags;
+                $destinationPath = 'assets/products/uploads/';
+                $file->move($destinationPath,$image_name);
 
-        $Product->product_type 	= $request->product_type;
+                $image_url = $destinationPath.$image_name;
+
+                $image_upload = true;
+            }         
         
-        $Product->product_overview 	= !empty($request->product_overview)?$request->product_overview:'';
+            $Product->product_code  = random_code(8);
+            $Product->product_name 	= $request->product_name;
+            $Product->description   = $request->product_description;
+            $Product->category_id 	= $request->category;
+            $Product->category_name = get_value('category_name', 'categories', $request->category, 'category_id');
+            $Product->company_id 	= $request->company;
+            $Product->company_name 	= get_value('company_name', 'companies', $request->company, 'company_id');
+            $Product->price 	= $request->price;  
+            $Product->flags 	= $request->flags;
+            $Product->product_type 	= $request->product_type;
+            $Product->product_overview 	= !empty($request->product_overview)?$request->product_overview:'';
+            $Product->product_image 	= $image_url;
+            
+            $saved = $Product->save();
 
-        $saved = $Product->save();
+            if($saved){
+                set_flashdata('message', 'Product Saved Successfully', 'success');
+            } else {
+                set_flashdata('message', 'Somthing Went Wrong,Please Try Again', 'error');
+            }
 
-        if($saved){
-            set_flashdata('message', 'Saved Successfully', 'success');
         } else {
-            set_flashdata('message', 'Somthing Went Wrong,Please Try Again', 'error');
+            set_flashdata('message', 'There some problem in image uloading please try again', 'error');
         }
 
         return back();

@@ -26,7 +26,7 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <h4 class="card-title"></h4>
-                                        <form class="needs-validation" novalidate method="POST" action="{{ url(url('add-product'))}}">
+                                        <form class="needs-validation" novalidate method="POST" action="{{ url(url('add-product'))}}" enctype="multipart/form-data">
                                             @csrf
                                             <div class="row">
                                                 <div class="col-md-6">
@@ -38,8 +38,8 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label for="validationCustom02">Category Image</label>
-                                                        <input type="text" class="form-control" id="validationCustom02" placeholder="Last name" value="Otto" required>
+                                                        <label for="validationCustom02">Product Image</label>
+                                                        <input type="file" name="product_image" class="form-control" id="validationCustom02" placeholder="Last name" required>
                                                        
                                                     </div>
                                                 </div>

@@ -449,7 +449,7 @@ function debug($item = array(), $die = true, $display = true) {
 }
 
 function random_code($length = 16) {
-	$chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+	$chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 	$code = substr( str_shuffle( $chars ), 0, $length );
 	return $code;
 }
