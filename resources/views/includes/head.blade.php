@@ -17,6 +17,7 @@
         <link href="{{asset('assets/css/app.min.css')}}" id="app-style" rel="stylesheet" type="text/css" />
 
         <link href="{{asset('assets/libs/toastr/build/toastr.min.css')}}" rel="stylesheet" type="text/css">
+        <meta name="csrf-token" content="{{ csrf_token() }}" />
         @php
         if( isset($inclusions['css']) ){
             foreach($inclusions['css'] as $file) {

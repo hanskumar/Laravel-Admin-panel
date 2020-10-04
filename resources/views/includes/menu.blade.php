@@ -126,8 +126,8 @@
                                                     Pincode <div class="arrow-down"></div>
                                                 </a>
                                                 <div class="dropdown-menu" aria-labelledby="topnav-utility">
-                                                    <a href="pages-starter.html" class="dropdown-item">Pincode List</a>
-                                                    <a href="pages-maintenance.html" class="dropdown-item">add</a>
+                                                    <a href="{{url('pincode-list')}}" class="dropdown-item">Pincode List</a>
+                                                    <a href="{{url('add-pincode')}}" class="dropdown-item">add Pincode</a>
                                                 </div>
                                             </div>
                                         </div>

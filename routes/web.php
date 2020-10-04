@@ -22,8 +22,8 @@ Route::get('/no-access', function () {
 });
 
 //===============Filter function==================//
-/* Route::post('/get_state', 'FilterController@get_state');
-Route::post('/get_city', 'FilterController@get_city'); */
+Route::post('/get_state', 'FiltersController@get_state');
+Route::post('/get_city', 'FiltersController@get_city'); 
 
 Route::get('/logout', 'LoginController@logout');
 Route::post('/login','LoginController@index');
@@ -44,6 +44,9 @@ Route::group(['middleware' => 'user_logged_in'], function () {
 
 
     Route::any('/add-product', 'ProductController@add');
+
+    Route::any('/add-pincode', 'PincodeController@add');
+    Route::any('/pincode-list', 'PincodeController@list');
 
 
 }); 
