@@ -75,8 +75,8 @@
                                             <a href="calendar.html" class="dropdown-item">User List</a>
                                             <a href="chat.html" class="dropdown-item">Add User</a>
 
-                                            <a href="calendar.html" class="dropdown-item">Brand List</a>
-                                            <a href="chat.html" class="dropdown-item">Add Brand</a>
+                                            <a href="{{url('brand-list')}}" class="dropdown-item">Brand List</a>
+                                            <a href="{{url('add-brand')}}" class="dropdown-item">Add Brand</a>
 
                                         </div>
                                     </li>

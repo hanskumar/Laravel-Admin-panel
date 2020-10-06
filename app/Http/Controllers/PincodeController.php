@@ -29,7 +29,6 @@ class PincodeController extends Controller {
     
             $Pincode = new PincodeMaster;
     
-                    
             $Pincode->zone 	= $request->zone;
             $Pincode->state   = $request->state;
             $Pincode->city 	= $request->city;

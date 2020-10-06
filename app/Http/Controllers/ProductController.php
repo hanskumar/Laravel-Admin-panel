@@ -6,14 +6,13 @@ use App\Models\Product;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
 
-
 use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller {
 
     /*
       Add New Product
-   */
+    */
    public function add(Request $request){
 
     if(request('submit')){

@@ -80,19 +80,6 @@ function insert_logs($table, $id, $old_data, $new_data, $device='', $name='', $u
 	return true;
 }
 
-//======== generate  uniquecode =========
-function generate_uniquecode($role){
-
-	$op = DB::table('users')->select('uniquecode')->where('uniquecode', 'like', $role.'%')->orderBy('id', 'DESC')->first();
-	if( !is_null($op) ){
-		$code = explode('_', $op->uniquecode);
-		$c = (int)$code[1]+1;
-		return $code[0].'_'.$c;
-	} else {
-		return $role.'_101';
-	}
-}
-
 function validateDate($date, $format = 'Y-m-d'){
 	$d = DateTime::createFromFormat($format, $date);
 	return $d && $d->format($format) === $date;
@@ -141,113 +128,6 @@ function submenu2($name){
 	} else {
 		return 'hide';
 	}
-}
-
-//================ State ==============
-function filter_state($zone='', $state=''){
-	$output = false;
-	
-	$CI->db->distinct();
-	$CI->db->select('statename');
-	$CI->db->from('citylist');
-	if( !empty($zone) ){
-		if(is_array($zone) && count($zone) > 0) {
-			$CI->db->where_in('region', explode(',', $zone));
-		} else {
-			$CI->db->where('region', $zone);
-		}
-	}
-	$query = $CI->db->get();
-	if( $query->num_rows() > 0  ) { 
-		$result = $query->result_array();
-		foreach($result as $re) {
-			$select = '';
-			if( !empty($state) && ($re['statename'] == $state) ){
-				$select = 'selected="selected"';
-			}
-			echo '<option value="'.$re['statename'].'"'.$select.' >'.$re['statename'].'</option>';
-		}
-	}
-	return false;
-}
-
-//================ City ==============
-function filter_city($zone='', $state='', $city=''){
-	$output = false;
-	
-	$CI->db->distinct();
-	$CI->db->select('cityname');
-	$CI->db->from('citylist');
-	if( !empty($zone) ){
-		if(is_array($zone) && count($zone) > 0) {
-			$CI->db->where_in('region', $zone);
-		} else {
-			$CI->db->where('region', $zone);
-		}
-	}
-	if( !empty($state) ){
-		if(is_array($state) && count($state) > 0) {
-			$CI->db->where_in('statename', explode(',', $state));
-		} else {
-			$CI->db->where('statename', $state);
-		}
-	}
-	$query = $CI->db->get();
-	if( $query->num_rows() > 0  ) { 
-		$result = $query->result_array();
-		foreach($result as $re) {
-			$select = '';
-			if( !empty($city) && ($city == $re['cityname']) ){
-				$select = 'selected';
-			}
-			echo '<option value="'.$re['cityname'].'"'.$select.' >'.$re['cityname'].'</option>';
-		}
-	}
-	return false;
-}
-
-//================ Retailer ==============
-function filter_retailer($zone='', $state='', $city='', $retailer=''){
-	$output = false;
-	
-	$CI->db->select('name as retailer_name,uniquecode as retailer_code,mobile,email');
-	$CI->db->from('user');
-	$CI->db->where('status', 'Approved');
-	$CI->db->where('role', 'retailer');
-	$CI->db->where_not_in('trade_type', array('B2B', 'activity'));
-	if( !empty($zone) ){
-		if(is_array($zone) && count($zone) > 0) {
-			$CI->db->where_in('zone', $zone);
-		} else {
-			$CI->db->where('zone', $zone);
-		}
-	}
-	if( !empty($state) ){
-		if(is_array($state) && count($state) > 0) {
-			$CI->db->where_in('state', $state);
-		} else {
-			$CI->db->where('state', $state);
-		}
-	}
-	if( !empty($city) ){
-		if(is_array($city) && count($city) > 0) {
-			$CI->db->where_in('city', $city);
-		} else {
-			$CI->db->where('city', $city);
-		}
-	}
-	$query = $CI->db->get();
-	if( $query->num_rows() > 0  ) { 
-		$result = $query->result_array();
-		foreach($result as $re) {
-			$select = '';
-			if( !empty($retailer) && ($retailer == $re['retailer_code']) ){
-				$select = 'selected';
-			}
-			echo '<option value="'.$re['retailer_code'].'"'.$select.' >'.$re['retailer_code'].' | '.$re['retailer_name'].'</option>';
-		}
-	}
-	return false;
 }
 
 //======================= Exception entry =========================
@@ -371,4 +251,22 @@ function table_size($database, $table_name) {
 		return $result['Size (MB)'];
 	}
 	return false;
+}
+
+
+function generate_UserId(){
+
+	$query = DB::table('users')
+			->select('user_id')
+			->orderBy('id','desc')
+            ->limit(1)
+			->get();
+    if($query ){
+		$user_id = date("dmy",time()).(substr($query[0]->user_id, -5)+1);
+		return $user_id;
+	} else {
+		$user_id = date("dmy",time()).'1001';
+		return $user_id;
+	}
+
 }

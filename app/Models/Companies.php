@@ -13,8 +13,8 @@ class Companies extends Model
 
     protected $guarded = [];
 
-    //public $timestamps = false;
+    public $timestamps = false;
 
-    const CREATED_AT = 'created_at';
+    //const CREATED_AT = 'created_at';
     //const UPDATED_AT = 'last_update';
 }

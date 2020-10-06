@@ -26,20 +26,28 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <h4 class="card-title"></h4>
-                                        <form class="needs-validation" novalidate method="POST" action="{{ url('add-product')}}" enctype="multipart/form-data">
+                                        <form class="needs-validation" novalidate method="POST" action="{{ url('add-brand')}}" enctype="multipart/form-data">
                                             @csrf
                                             <div class="row">
-                                                <div class="col-md-6">
+                                                <div class="col-md-4">
                                                     <div class="form-group">
-                                                        <label for="validationCustom01">Product name *</label>
-                                                        <input type="text" class="form-control" id="validationCustom01" placeholder="Product name" name="product_name" value="{{ old('product_name') }}" required>
+                                                        <label for="validationCustom01">Brand name *</label>
+                                                        <input type="text" class="form-control" id="validationCustom01" placeholder="Brand name" name="brand_name" value="{{ old('brand_name') }}" required>
                                                         
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6">
+                                                <div class="col-md-4">
                                                     <div class="form-group">
-                                                        <label for="validationCustom02">Product Image</label>
-                                                        <input type="file" name="product_image" class="form-control" id="validationCustom02" placeholder="Last name" required>
+                                                        <label for="validationCustom02">Brand Email *</label>
+                                                        <input type="text" class="form-control" id="validationCustom01" placeholder="Brand Email" name="brand_email" value="{{ old('brand_email') }}" required>
+                                                       
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label for="validationCustom02">Brand Phone *</label>
+                                                        <input type="text" class="form-control" id="validationCustom01" placeholder="Brand Phone" name="brand_phone" value="{{ old('brand_phone') }}" required>
                                                        
                                                     </div>
                                                 </div>
@@ -48,20 +56,18 @@
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label for="validationCustom01">Product Descirption *</label>
-                                                        <input type="text" class="form-control" id="validationCustom01" placeholder="Product Descirption" name="product_description" value="{{ old('product_description') }}" required>
+                                                        <label for="validationCustom01">Contact Person Name *</label>
+                                                        <input type="text" class="form-control" id="validationCustom01" placeholder="Contact Person Name" name="contact_person" value="{{ old('contact_person') }}" required>
                                                         
                                                     </div>
                                                 </div>
 
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label for="validationCustom01">Category *</label>
+                                                        <label for="validationCustom01">Brand *</label>
                                                         <select class="form-control select2" name="category">
                                                             <option>Select Category</option>
-                                                            @foreach ($categories as $ctr)
-                                                                <option value="{{ $ctr->category_id }}">{{ $ctr->category_name }}</option>
-                                                            @endforeach
+                                                           
                                                         </select>
                                                      </div>   
                                                 </div>
@@ -71,59 +77,56 @@
                                             <div class="row">                                            
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label for="validationCustom01">Company *</label>
-                                                        <select class="form-control" name="company">
-                                                            <option>Select Company</option>
-                                                            @foreach ($companies as $cpm)
-                                                                <option value="{{ $cpm->company_id }}">{{ $cpm->company_name }}</option>
-                                                            @endforeach
-                                                            
-                                                        </select>
+                                                        <label for="validationCustom01">Brand Image</label>
+                                                        <input type="file" name="brand_image" class="form-control" id="validationCustom02" placeholder="Last name" required>
                                                      </div>   
                                                 </div>
 
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label for="validationCustom01">Price *</label>
-                                                        <input type="text" class="form-control" id="validationCustom01" placeholder="Product price" name="price" value="{{ old('price') }}" required>
-                                                        <div class="valid-feedback">
-                                                            Looks good!
-                                                        </div>
+                                                        <label for="validationCustom01">Brand Icon *</label>
+                                                        <input type="file" name="brand_icon" class="form-control" id="validationCustom02" placeholder="Last name" required>
                                                     </div>
                                                 </div>
                                             </div>
 
                                             
                                             <div class="row">                                            
-                                                <div class="col-md-6">
+                                                <div class="col-md-4">
                                                     <div class="form-group">
-                                                        <label for="validationCustom01">Product Type *</label>
-                                                        <select class="form-control" name="product_type">
+                                                        <label for="validationCustom01">Shipping Type *</label>
+                                                        <select class="form-control" name="shipping_type">
                                                             <option>Select Product Type</option>
-                                                            <option>Veg</option>
-                                                            <option>Non-Veg</option>
+                                                            <option>Min Order</option>
+                                                            <option>Fixed Price</option>
                                                         </select>
                                                      </div>   
                                                 </div>
 
-                                                <div class="col-md-6">
+                                                <div class="col-md-4">
                                                     <div class="form-group">
-                                                        <label for="validationCustom01">Flags *</label>
-                                                        <input type="text" class="form-control" id="validationCustom01" placeholder="Product flags" name="flags" value="{{ old('flags') }}" required>
-                                                        <div class="valid-feedback">
-                                                            Looks good!
-                                                        </div>
+                                                        <label for="validationCustom01">Min Order Value *</label>
+                                                        <input type="text" class="form-control" id="validationCustom01" placeholder="Min Order Value" name="min_order_value" value="{{ old('min_order_value') }}" required>
+                                                       
+                                                    </div>
+                                                </div>
+
+                                                
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label for="validationCustom01">Shipping Charges *</label>
+                                                        <input type="text" class="form-control" id="validationCustom01" placeholder="Shipping Charges" name="shipping_charges" value="{{ old('shipping_charges') }}" required>
+                                                        
                                                     </div>
                                                 </div>
                                             </div>
-
 
                                             
                                             <div class="row">                                            
                                                 <div class="col-md-12">
                                                     <div class="form-group">
-                                                        <label for="validationCustom01">Product Overview</label>
-                                                        <textarea id="textarea" class="form-control" maxlength="225" rows="3" placeholder="product overview." name="product_overview"></textarea>
+                                                        <label for="validationCustom01">Address</label>
+                                                        <textarea id="textarea" class="form-control" maxlength="225" rows="3" placeholder="Address." name="address"></textarea>
                                                      </div>   
                                                 </div>
                                                 

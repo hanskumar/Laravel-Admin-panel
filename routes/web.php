@@ -49,4 +49,8 @@ Route::group(['middleware' => 'user_logged_in'], function () {
     Route::any('/pincode-list', 'PincodeController@list');
 
 
+    Route::any('/add-brand', 'BrandController@add');
+    Route::any('/brand-list', 'BrandController@list');
+
+
 }); 
