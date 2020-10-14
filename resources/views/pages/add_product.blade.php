@@ -86,9 +86,7 @@
                                                     <div class="form-group">
                                                         <label for="validationCustom01">Price *</label>
                                                         <input type="text" class="form-control" id="validationCustom01" placeholder="Product price" name="price" value="{{ old('price') }}" required>
-                                                        <div class="valid-feedback">
-                                                            Looks good!
-                                                        </div>
+                                                        
                                                     </div>
                                                 </div>
                                             </div>

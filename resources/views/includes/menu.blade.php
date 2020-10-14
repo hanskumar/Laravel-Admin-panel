@@ -13,7 +13,7 @@
                                         <div class="dropdown-menu" aria-labelledby="topnav-dashboard">
 
                                             <a href="index.html" class="dropdown-item">Notifications List</a>
-                                            <a href="dashboard-saas.html" class="dropdown-item">Send Notification</a>
+                                            <a href="{{ url('send-noti')}}" class="dropdown-item">Send Notification</a>
                                             
                                         </div>
                                     </li>
@@ -73,7 +73,7 @@
                                         <div class="dropdown-menu" aria-labelledby="topnav-pages">
 
                                             <a href="calendar.html" class="dropdown-item">User List</a>
-                                            <a href="chat.html" class="dropdown-item">Add User</a>
+                                            
 
                                             <a href="{{url('brand-list')}}" class="dropdown-item">Brand List</a>
                                             <a href="{{url('add-brand')}}" class="dropdown-item">Add Brand</a>

@@ -12,7 +12,7 @@
 
                                     <div class="page-title-right">
                                     <a href="{{ url('product-list')}}" >
-                                        <button type="button" class="btn btn-success waves-effect mb-2"><i class="fe-download mr-1"></i>Product List</button>
+                                        <button type="button" class="btn btn-success waves-effect mb-2"><i class="fe-download mr-1"></i>Brands List</button>
                                     </a>
                                     </div>
 

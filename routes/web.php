@@ -44,6 +44,10 @@ Route::group(['middleware' => 'user_logged_in'], function () {
 
 
     Route::any('/add-product', 'ProductController@add');
+    Route::any('/product-list', 'ProductController@list');
+
+    Route::POST('/product-data', 'ProductController@data')->name('product_data');;
+
 
     Route::any('/add-pincode', 'PincodeController@add');
     Route::any('/pincode-list', 'PincodeController@list');
@@ -51,6 +55,9 @@ Route::group(['middleware' => 'user_logged_in'], function () {
 
     Route::any('/add-brand', 'BrandController@add');
     Route::any('/brand-list', 'BrandController@list');
+
+
+    Route::any('/send-noti', 'NotificationController@add');
 
 
 }); 
