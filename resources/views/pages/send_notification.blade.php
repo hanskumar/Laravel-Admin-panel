@@ -2,7 +2,7 @@
 @section('content')
 
         <div class="page-content">
-                    <div class="container-fluid">
+                    <div class="container-fluid" style="max-width: 95%;">
 
                         <!-- start page title -->
                         <div class="row">
@@ -26,9 +26,20 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <h4 class="card-title"></h4>
-                                        <form class="needs-validation" novalidate method="POST" action="{{ url(url('add-pincode'))}}">
+                                        <form class="needs-validation" novalidate method="POST" action="{{url('send-noti')}}">
                                             @csrf
                                             <div class="row">
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        
+                                                        <select class="form-control select2" name="app" id="app">
+                                                            <option>Select APP</option>
+                                                            <option value="user">User APP</option>
+                                                            <option value="brand">Brand APP</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
                                                 <div class="col-md-4">
                                                     <div class="custom-control custom-radio">
                                                         <input type="radio" id="customRadio1" name="noti_type" class="custom-control-input">
@@ -48,13 +59,12 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="pincode">Select User *</label>
-                                                        <select class="form-control select2" name="user" id="user">
+                                                        <select class="form-control select2" name="Selected_user" id="user">
                                                             <option>Select User</option>
                                                             @foreach ($users as $usr)
                                                                 <option value="{{ $usr->user_id }}">{{ $usr->name }}-{{ $usr->phone }}</option>
                                                             @endforeach
                                                         </select>
-                                                        
                                                     </div>
                                                 </div>
                                             </div>
@@ -64,14 +74,7 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="pincode">Notification title *</label>
-                                                        <select class="form-control select2" name="title" id="title">
-                                                            <option>Select Zone</option>
-                                                            <option>North</option>
-                                                            <option>East</option>
-                                                            <option>West</option>
-                                                            <option>South</option>
-                                                        </select>
-                                                        
+                                                        <input type="text" id="title" class="form-control" placeholder="Notification Titile " name="title">
                                                     </div>
                                                 </div>
 
@@ -79,13 +82,10 @@
                                                     <div class="form-group">
                                                         <label for="validationCustom01">Notification Message *</label>
                                                         <textarea id="textarea" class="form-control" maxlength="225" rows="3" placeholder="Notification Message " name="message"></textarea>
-                                                    
                                                      </div>   
                                                 </div>
                                             </div>
 
-                                            
-                                            
                                             <center>
                                                 <button class="btn btn-primary" type="submit" name="submit" value="submit">Submit</button>
                                             </center>

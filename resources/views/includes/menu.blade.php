@@ -12,7 +12,7 @@
                                         </a>
                                         <div class="dropdown-menu" aria-labelledby="topnav-dashboard">
 
-                                            <a href="index.html" class="dropdown-item">Notifications List</a>
+                                            <a href="{{ url('noti-list')}}" class="dropdown-item">Notifications List</a>
                                             <a href="{{ url('send-noti')}}" class="dropdown-item">Send Notification</a>
                                             
                                         </div>
@@ -24,7 +24,7 @@
                                             <i class="bx bx-tone mr-2"></i>UI Elements <div class="arrow-down"></div>
                                         </a>
 
-                                        <div class="dropdown-menu mega-dropdown-menu px-2 dropdown-mega-menu-xl"
+                                        <div class="dropdown-menu"
                                             aria-labelledby="topnav-uielement">
                                             <div class="row">
                                                 <div class="col-lg-4">
@@ -32,36 +32,10 @@
                                                         <a href="ui-alerts.html" class="dropdown-item">Alerts</a>
                                                         <a href="ui-buttons.html" class="dropdown-item">Buttons</a>
                                                         <a href="ui-cards.html" class="dropdown-item">Cards</a>
-                                                        <a href="ui-carousel.html" class="dropdown-item">Carousel</a>
-                                                        <a href="ui-dropdowns.html" class="dropdown-item">Dropdowns</a>
-                                                        <a href="ui-grid.html" class="dropdown-item">Grid</a>
-                                                        <a href="ui-images.html" class="dropdown-item">Images</a>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4">
-                                                    <div>
-                                                        <a href="ui-lightbox.html" class="dropdown-item">Lightbox</a>
-                                                        <a href="ui-modals.html" class="dropdown-item">Modals</a>
-                                                        <a href="ui-rangeslider.html" class="dropdown-item">Range Slider</a>
-                                                        <a href="ui-session-timeout.html" class="dropdown-item">Session Timeout</a>
-                                                        <a href="ui-progressbars.html" class="dropdown-item">Progress Bars</a>
-                                                        <a href="ui-sweet-alert.html" class="dropdown-item">Sweet-Alert</a>
-                                                        <a href="ui-tabs-accordions.html" class="dropdown-item">Tabs & Accordions</a>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4">
-                                                    <div>
-                                                        <a href="ui-typography.html" class="dropdown-item">Typography</a>
-                                                        <a href="ui-video.html" class="dropdown-item">Video</a>
-                                                        <a href="ui-general.html" class="dropdown-item">General</a>
-                                                        <a href="ui-colors.html" class="dropdown-item">Colors</a>
-                                                        <a href="ui-rating.html" class="dropdown-item">Rating</a>
-                                                        <a href="ui-notifications.html" class="dropdown-item">Notifications</a>
-                                                        <a href="ui-image-cropper.html" class="dropdown-item">Image Cropper</a>
+                                                       
                                                     </div>
                                                 </div>
                                             </div>
-
                                         </div>
                                     </li>
     
@@ -72,7 +46,7 @@
                                         </a>
                                         <div class="dropdown-menu" aria-labelledby="topnav-pages">
 
-                                            <a href="calendar.html" class="dropdown-item">User List</a>
+                                            <a href="{{url('user-list')}}" class="dropdown-item">User List</a>
                                             
 
                                             <a href="{{url('brand-list')}}" class="dropdown-item">Brand List</a>
@@ -87,7 +61,7 @@
                                             <i class="bx bx-collection mr-2"></i>Order Management <div class="arrow-down"></div>
                                         </a>
                                         <div class="dropdown-menu" aria-labelledby="topnav-pages">
-                                            <a href="calendar.html" class="dropdown-item">Order List</a>
+                                            <a href="{{url('orders')}}" class="dropdown-item">Orders</a>
                                         </div>
                                     </li>
     
@@ -128,6 +102,15 @@
                                                 <div class="dropdown-menu" aria-labelledby="topnav-utility">
                                                     <a href="{{url('pincode-list')}}" class="dropdown-item">Pincode List</a>
                                                     <a href="{{url('add-pincode')}}" class="dropdown-item">add Pincode</a>
+                                                </div>
+                                            </div>
+
+                                            <div class="dropdown">
+                                                <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-utility" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Flags Master <div class="arrow-down"></div>
+                                                </a>
+                                                <div class="dropdown-menu" aria-labelledby="topnav-utility">
+                                                    <a href="{{url('flag-list')}}" class="dropdown-item">Flag List</a>
+                                                    <a href="{{url('add-flag')}}" class="dropdown-item">add Flag</a>
                                                 </div>
                                             </div>
                                         </div>

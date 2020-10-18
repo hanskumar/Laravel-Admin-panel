@@ -14,7 +14,7 @@
                                         <button type="button" class="btn btn-info  waves-effect mb-2" data-toggle="modal" data-target=".bs-example-modal-lg"><i class="fas fa-filter"></i> Filter</button>
                                     </a>
 
-                                    <a href="{{ url('download-product')}}" >
+                                    <a href="{{ url('download-user')}}" >
                                         <button type="button" class="btn btn-success waves-effect mb-2"><i class="fas fa-download"></i> Download</button>
                                     </a>
                                 </div>
@@ -32,13 +32,14 @@
                                     <table id="datatable" class="table table-responsive server-side table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                         <thead>
                                         <tr>
-                                            <th>Product Name</th>
-                                            <th>Product Image</th>
-                                            <th>Price</th>
-                                            <th>flags</th>
-                                            <th>Product Type</th>
-                                            <th>Category Name</th>
-                                            <th>Company Name</th>
+                                            <th>User Id</th>
+                                            <th>Name</th>
+                                            <th>Email</th>
+                                            <th>Phone</th>
+                                            <th>Image</th>
+                                            <th>Login By</th>
+                                            <th>location</th>
+                                            <th>Reg At</th>
                                             <th>Status</th>
                                         </tr>
                                         </thead>
@@ -67,9 +68,7 @@
                                                         <label for="validationCustom01">Company </label>
                                                         <select class="form-control" name="company">
                                                             <option>Select Company</option>
-                                                            @foreach ($companies as $cpm)
-                                                                <option value="{{ $cpm->company_id }}">{{ $cpm->company_name }}</option>
-                                                            @endforeach
+                                                           
                                                             
                                                         </select>
                                                         
@@ -79,10 +78,7 @@
                                                     <div class="form-group">
                                                         <label for="validationCustom02">Category </label>
                                                         <select class="form-control select2" name="category">
-                                                            <option>Select Category</option>
-                                                            @foreach ($categories as $ctr)
-                                                                <option value="{{ $ctr->category_id }}">{{ $ctr->category_name }}</option>
-                                                            @endforeach
+                                                            
                                                         </select>
                                                     </div>
                                                 </div>
@@ -121,8 +117,6 @@
                             </div><!-- /.modal-content -->
                         </div><!-- /.modal-dialog -->
                     </div><!-- /.modal -->
-
-
             </div>
     </div>               
 @endsection 
@@ -144,7 +138,7 @@ $(document).ready(function() {
             "processing": true,
             "serverSide": true,
             "ajax": {
-                url: "{{route('product_data')}}",
+                url: "{{route('brand_data')}}",
                 type: "POST",
                 data:{
                     _token: _token,

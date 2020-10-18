@@ -271,5 +271,14 @@ class ProductController extends Controller {
 		}*/
 
 		return $where_array;
+    }
+    
+    public function download(){
+
+        $query = Product::select('product_name as Product Name','category_name as Category Name','company_name as Company Name','price as price','flags as Flags','product_type as Product Type','product_overview as Product Overview','product_status as Status')
+            ->get()->toArray();
+        $header = array_keys($query[0]);
+        array_unshift($query, $header);
+        array_to_csv($query, 'Products_list.csv');
 	}
 }

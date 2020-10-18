@@ -38,26 +38,39 @@ Route::post('/login','LoginController@index');
 Route::group(['middleware' => 'user_logged_in'], function () {
     Route::get('/dashboard','DashboardController@index');
 
-    Route::get('/category-list', 'CategoryController@index');
-    Route::get('/category/getCategries/','CategoryController@getCategries')->name('category.getCategries');
+    Route::GET('/category-list', 'CategoryController@index');
+    Route::POST('/category/getCategries/','CategoryController@getCategries')->name('category.getCategries');
     Route::any('/add-category', 'CategoryController@add');
 
 
     Route::any('/add-product', 'ProductController@add');
     Route::any('/product-list', 'ProductController@list');
-
-    Route::POST('/product-data', 'ProductController@data')->name('product_data');;
+    Route::POST('/product-data', 'ProductController@data')->name('product_data');
+    Route::GET('/download-product', 'ProductController@download');
 
 
     Route::any('/add-pincode', 'PincodeController@add');
-    Route::any('/pincode-list', 'PincodeController@list');
-
+    Route::GET('/pincode-list', 'PincodeController@list');
+    Route::POST('/pincode-data', 'PincodeController@data')->name('pincode_data');
+    Route::GET('/download-pincodes', 'PincodeController@download');
 
     Route::any('/add-brand', 'BrandController@add');
-    Route::any('/brand-list', 'BrandController@list');
+    Route::GET('/brand-list', 'BrandController@list');
+    Route::POST('/brand-data', 'BrandController@data')->name('brand_data');
+
+
+    Route::GET('/user-list', 'UserController@list');
+    Route::POST('/user-data', 'UserController@data')->name('user_data');
+    Route::GET('/download-user', 'UserController@download');
 
 
     Route::any('/send-noti', 'NotificationController@add');
+    Route::GET('/noti-list', 'NotificationController@list');
+    Route::POST('/noti-data', 'NotificationController@data')->name('noti_data');
+
+
+    Route::GET('/orders', 'OrderController@list');
+    Route::POST('/order-data', 'OrderController@data')->name('order_data');
 
 
 }); 

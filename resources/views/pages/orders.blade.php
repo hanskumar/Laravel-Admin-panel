@@ -8,9 +8,8 @@
                         <div class="col-12">
                             <div class="page-title-box d-flex align-items-center justify-content-between">
                                 <h4 class="mb-0 font-size-18">{{ $title }}</h4>
-
                                 <div class="page-title-right">
-                                    <a href="{{ url('download-pincodes')}}" >
+                                    <a href="{{ url('download-product')}}" >
                                         <button type="button" class="btn btn-success waves-effect mb-2"><i class="fas fa-download"></i> Download</button>
                                     </a>
                                 </div>
@@ -25,14 +24,18 @@
                             <div class="card">
                                 <div class="card-body">
                             
-                                <table id="datatable" class="table server-side table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                    <table id="datatable" class="table table-responsive server-side table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                         <thead>
                                         <tr>
-                                            <th>Category Id</th>
-                                            <th>Category Name</th>
-                                            <th>Category Image</th>
+                                            <th>Order ID</th>
+                                            <th>User's Name</th>
+                                            <th>User's ID</th>
+                                            <th>Order Amount </th>
+                                            <th>Discounted amount</th>
+                                            <th>Coupen Applied</th>
+                                            <th>Order Status</th>
+                                            <th>Payment Status</th>
                                             <th>Date</th>
-                                            <th>Status</th>
                                         </tr>
                                         </thead>
                                     </table>
@@ -46,17 +49,23 @@
 @endsection 
 
 @section('custom_page_js') 
-<script type="text/javascript">
+ <!-- Script -->
 
+<script type="text/javascript">
 $(document).ready(function() {
+
     //========================== Datatable server side code ===================
+    //var start_date = '<?php //echo @$_POST['start_date']; ?>';
+    //var end_date = '<?php //echo @$_POST['end_date']; ?>';
+    //var channel_type_sub = '<?php //echo @implode(',', $_POST['channel_type_sub']); ?>';
+    //var filter = '<?php //echo @$_POST['filter']; ?>';
     let _token   = $('meta[name="csrf-token"]').attr('content');
 
     $('.server-side').DataTable({
             "processing": true,
             "serverSide": true,
             "ajax": {
-                url: "{{route('category.getCategries')}}",
+                url: "{{route('order_data')}}",
                 type: "POST",
                 data:{
                     _token: _token,

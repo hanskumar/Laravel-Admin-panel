@@ -172,18 +172,14 @@ function query_exception($code='', $api='', $query='', $input='', $msg='', $role
 
 function send_notification($registrationIds,$role,$message='',$title,$type='') {
 
-	$RET_ACCESS_KEY = 'AAAA7kSNSdk:APA91bFIpGZ4N1m8ZkRZo8aaDtuBF1Kr_KsrSwMb0F3kLWzd8d-jrGZWC8cWXgnReekB05Lo31ME4-Xw9YuMVzCY6YnLwQe24giD5DDuS7D72R1jDBxYK-CzgYmrafAtIzfTOCNecnJS';
-	$RM_ACCESS_KEY = 'AAAA5w8GjIY:APA91bEkQSNaEfmuZMkl7D_Kxb9sYQloDXNf4VeRcFDZbTfiXiSsz03v9qInNKUGnigjv_6Np75A-3LYMPmQsL7FGCbLLLvDvTg_hMYe01yWrjmJ-5Z2FofXeWB2BRWXvlPPXuPchCY3';
-	$BM_ACCESS_KEY = 'AAAAeScdf-s:APA91bHq3mQ8rJaQXYaA8JVSGMVqSkrZ2SbqSwZkBDr87ULUIs607yoWubF0OnhQk99Uxf9Ffzop5_UOyl8goJ-Rq2ZE3EYX97iS9G-dKnmexsDbK1ZKjxshIdDENDerjNLImXP8isav';
-
-	if( $role == 'rm' ){
-		$API_ACCESS_KEY = $RM_ACCESS_KEY;
-	} else if( $role == 'bm' ){
-		$API_ACCESS_KEY = $BM_ACCESS_KEY;
-	} else {
-		$API_ACCESS_KEY = $RET_ACCESS_KEY;
-	}
-
+	$USER_ACCESS_KEY = 'AAAASSB688c:APA91bH4MLOgGWXiSfWT2ItnLCBFLwEvZ7xhHWtz7wTY0ibN8wpYvsWekM3l_mcWwlLJfgLfCseWrFVXlA-dvl4EiKqPvgCIOWaK9MFEcrQM5PJDm8kK1iISjhZ3Q57MGLmq9QuaWrPE';
+	
+	if( $role == 'user' ){
+		$API_ACCESS_KEY = $USER_ACCESS_KEY;
+	} else if( $role == 'brand' ){
+		$API_ACCESS_KEY = $BRAND_ACCESS_KEY;
+	} 
+	
 	$msg = array(
 		'message'   => $message,
 		'title'     => $title
